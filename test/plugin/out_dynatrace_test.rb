@@ -20,6 +20,7 @@ require 'fluent/test/driver/output'
 require 'fluent/plugin/out_dynatrace'
 require 'fluent/plugin/dynatrace_constants'
 require 'webrick'
+require 'yajl'
 
 class FakeAgent
   Result = Struct.new('Result', :data, :headers)
@@ -68,7 +69,7 @@ class FakeAgent
       @result.headers[key] = value
     end
 
-    @result.data = JSON.parse(body)
+    @result.data = Yajl.load(body)
     @processing_request = false
     @result.data
   end

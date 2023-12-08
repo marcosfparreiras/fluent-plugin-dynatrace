@@ -25,6 +25,7 @@ Gem::Specification.new do |gem|
   gem.required_ruby_version = '>= 2.4.0'
 
   gem.add_runtime_dependency 'fluentd', ['>= 0.14.22', '< 2']
+  gem.add_runtime_dependency 'yajl-ruby', ['~> 1.4']
   gem.add_development_dependency 'bundler', ['>= 2', '<3']
   gem.add_development_dependency 'rake', '13.0.3'
   gem.add_development_dependency 'rubocop', '1.9.1'

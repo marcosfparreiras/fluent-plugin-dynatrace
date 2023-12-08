@@ -19,7 +19,7 @@ require 'fluent/test'
 require 'fluent/test/helpers'
 require 'fluent/test/driver/output'
 require 'fluent/plugin/out_dynatrace'
-require 'json'
+require 'yajl'
 
 MAX_ATTEMPTS = 20
 
@@ -94,7 +94,7 @@ class TestPluginDynatraceIntegration < Test::Unit::TestCase
 
     raise "#{res.code} #{res.message}" unless res.is_a?(Net::HTTPSuccess)
 
-    body = JSON.parse(res.body)
+    body = Yajl.load(res.body)
     results = body['results']
 
     return false if results.length.zero?

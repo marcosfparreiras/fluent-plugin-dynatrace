@@ -155,7 +155,7 @@ module Fluent
 
       def serialize(records)
         log.on_trace { log.trace('#serialize') }
-        body = "#{records.to_json.chomp}\n"
+        body = "#{Yajl.dump(records).chomp}\n"
         log.on_trace { log.trace("#serialize body length #{body.length}") }
         body
       end
